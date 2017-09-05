@@ -20,7 +20,6 @@ public class QuickSort {
 			sort(arr, start, mid-1);
 			sort(arr, mid+1, end);
 		}
-
 	}
 	public int partition(int[] arr,int low, int high) {
 		int tmp = arr[low];

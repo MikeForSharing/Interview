@@ -1,62 +1,48 @@
-package Sort;
+package src.Sort;
 
 import java.util.Arrays;
 
 public class MergeSort {
-	
-    public static void main(String[] args) {  
-        int[] arr = { 2, 7, 8, 3, 1, 6, 9, 0, 5, 4 };  
-        MergeSort ms = new MergeSort();
-        ms.sort(arr, 0, arr.length-1);  
-        System.out.println(Arrays.toString(arr));  
-    }  
-	 
-	public int[] sort(int[] a,int left,int right) {
-		
-		int mid = (left+right)/2;
-		if(left<right) {
-			sort(a,left,mid);
-			sort(a,mid+1,right);
-			merge(a,left,mid,right);
-		}
-		
-		return a;
-	}
-		
-	private void merge(int[] a, int left, int mid, int right) {
-		int[] tmp = new int[right-left+1];
-		int lindex = left;
-		int index = 0;
-		int r1 = mid+1;
 
-		while(lindex<=mid && r1<=right) {
-			if(a[lindex] <= a[r1]) {
-				tmp[index] = a[lindex];
-				
-				lindex++;
-				index++;
-			}else{
-				tmp[index] = a[r1];
-				r1++;
-				index++;
+	public void sort(int[] arr,int left,int right) {
+		int mid = (left+right)/2;
+		if (left<right) {
+			sort(arr, left, mid);
+			sort(arr, mid+1, right);
+			merge(arr,mid,left,right);
+		}
+	}
+	
+	public void merge(int[] arr,int mid,int left,int right) {
+		int[] tmp = new int[right-left+1];
+		int i = left;
+		int j = mid+1;
+		int k = 0;
+		
+		while(i<=mid&&j<=right) {
+			if (arr[i]<arr[j]) {
+				tmp[k++] = arr[i++];
+			}else {
+				tmp[k++] = arr[j++];
 			}
 		}
-		while(lindex<=mid) {
-			tmp[index] = a[lindex];
-			index++;
-			lindex++;
+		while(i<=mid) {
+			tmp[k++] = arr[i++];
 		}
-		while(r1<=right) {
-			tmp[index]= a[r1];
-			index++;
-			r1++;
+		while (j<=right) {
+			tmp[k++] = arr[j++];
 		}
-//		printArr(tmp);
-		for(int i=0;i<tmp.length;i++) {
-			a[i+left] = tmp[i];
-			System.out.print(tmp[i] + " ");
+		for (int l = 0; l<tmp.length ; l++) {
+			arr[l+left] = tmp[l];
 		}
-		System.out.println();
+	}
+	
+	
+	public static void main(String[] args) {
+		int[] arr = {5,2,4,1,6};
+		new MergeSort().sort(arr, 0, arr.length-1);
+		System.out.println(Arrays.toString(arr));
+		
 	}
 
 }
