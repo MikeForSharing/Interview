@@ -8,7 +8,7 @@ public class Item54 {
 		int colum = matrix[0].length - 1;
 		
 		while (row<matrix.length&&colum>-1) {
-			if(matrix[row][colum] == k) {
+			if (matrix[row][colum] == k) {
 				return true; 
 			}
 			
@@ -21,7 +21,6 @@ public class Item54 {
 		}
 		return false;
 	}
-	
 	
 
 	public static void main(String[] args){
