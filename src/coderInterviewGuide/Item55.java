@@ -28,7 +28,6 @@ public class Item55 {
 		return true;
 	}
 	
-	
 
 	public static void main(String[] args){
 		int[] arr = {1,2,3};
